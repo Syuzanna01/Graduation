@@ -20,7 +20,7 @@ namespace Graduation.BLL.AcaontBL
         }
 
         public GroupEntity GetById(int id)
-        {
+        { 
             return _unitOfWork.GroupRepository.GetById(id);
             
         }
