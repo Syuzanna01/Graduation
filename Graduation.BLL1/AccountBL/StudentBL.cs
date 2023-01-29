@@ -8,28 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Graduation.BLL.AcaontBL
+namespace Graduation.BLL.AccountBL
 {
-
-    public class GroupBL : IGroupBL,IStudentBL
+    public class StudentBL:IStudentBL
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GroupBL(IUnitOfWork unitOfWork)
+        public StudentBL(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
-
-        public GroupEntity GetById(int id)
-        {
-            return _unitOfWork.GroupRepository.GetById(id);
-        }
-
         public void Insert(StudentsModel student)
         {
-            _unitOfWork.StudentRepository.Insert(StudentMaper.MaperStudent(student));
+
+
+            var aa = StudentMaper.MaperStudent(student);
+
+            aa.GroupId = 3;
+            _unitOfWork.StudentRepository.Insert(aa);
+
+            _unitOfWork.StudentRepository.Save();
         }
     }
 }
-
-

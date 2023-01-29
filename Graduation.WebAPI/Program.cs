@@ -1,6 +1,7 @@
-using Graduation.BLL.AcaontBL;
+using Graduation.BLL.GroupBL;
 using Graduation.BLL.BLConract;
 using Graduation.DAL.UnitOfWork;
+using Graduation.BLL.AccountBL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IGroupBL,GroupBL>();
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+builder.Services.AddScoped<IGroupBL, GroupBL>();
+builder.Services.AddScoped<IStudentBL, StudentBL>();
 
 var app = builder.Build();
 

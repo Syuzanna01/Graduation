@@ -4,13 +4,6 @@ namespace DataAccessLayer.Entities
 {
     public class StudentsModel
     {
-        private StudentsModel students;
-
-        public StudentsModel(StudentsModel students)
-        {
-            this.students = students;
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

@@ -9,40 +9,28 @@ namespace Graduation.WebAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IGroupBL _groupBL;
-        private readonly IStudentBL _SroupBL;
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IGroupBL groupBL)
+        private readonly IStudentBL _studentBL;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IGroupBL groupBL,IStudentBL studentBL)
         {
             _logger = logger;
             _groupBL = groupBL;
+            _studentBL = studentBL;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get(int Id)//[FromBody] GroupEntity groupEntity
+        public IActionResult Get(int Id)//[FromBody] GroupEntity groupEntity
         {
             _groupBL.GetById(Id);
 
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return Ok();
         }
 
         [HttpPost]
-        public void Post([FromBody] StudentsModel student)//[FromBody] GroupEntity groupEntity
+        public void Save([FromBody] StudentsModel student)//[FromBody] GroupEntity groupEntity
         {
-            _SroupBL.Insert(student);
-        }
-        
+            _studentBL.Insert(student);
+        }   
     }
-
 }
