@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Entities;
+using Graduation.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,10 @@ namespace Graduation.BLL.BLConract
     public interface IGroupBL
     {
         GroupEntity GetById(int id);
+    }
+    public interface IStudentBL
+    {
+        void Insert(StudentsModel student);
     }
 
 }

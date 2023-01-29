@@ -1,4 +1,6 @@
-﻿using Graduation.DAL;
+﻿using DataAccessLayer.Entities;
+using Graduation.DAL;
+using Graduation.DAL.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,6 @@
 using DataAccessLayer.Entities;
 using Graduation.BLL.BLConract;
+using Graduation.BLL.Maper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Graduation.WebAPI.Controllers
@@ -15,6 +16,7 @@ namespace Graduation.WebAPI.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IGroupBL _groupBL;
+        private readonly IStudentBL _SroupBL;
         public WeatherForecastController(ILogger<WeatherForecastController> logger, IGroupBL groupBL)
         {
             _logger = logger;
@@ -22,9 +24,9 @@ namespace Graduation.WebAPI.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get(int id)//[FromBody] GroupEntity groupEntity
+        public IEnumerable<WeatherForecast> Get(int Id)//[FromBody] GroupEntity groupEntity
         {
-            _groupBL.GetById(id);
+            _groupBL.GetById(Id);
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -34,5 +36,13 @@ namespace Graduation.WebAPI.Controllers
             })
             .ToArray();
         }
+
+        [HttpPost]
+        public void Post([FromBody] StudentsModel student)//[FromBody] GroupEntity groupEntity
+        {
+            _SroupBL.Insert(student);
+        }
+        
     }
+
 }
