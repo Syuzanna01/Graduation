@@ -13,7 +13,7 @@ namespace Graduation.DAL.UnitOfWork
         GenericRepository<InstituteEntity> InstituteRepository { get; }
         GenericRepository<LecturerEntitiy> LecturerRepository { get; }
         GenericRepository<LecturerGroupEntity> LecturerGroupRepository { get; }
-        GenericRepository<PulpitEntity> PulpitRepository { get; }
+        GenericRepository<ChairsEntity> PulpitRepository { get; }
         GenericRepository<SectionEntitiy> SectionRepository { get; }
         GenericRepository<StudentEntity> StudentRepository { get; }
     }

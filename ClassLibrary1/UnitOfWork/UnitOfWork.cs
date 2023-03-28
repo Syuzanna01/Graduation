@@ -13,7 +13,7 @@ namespace Graduation.DAL.UnitOfWork
         private GenericRepository<InstituteEntity> instituteRepository;
         private GenericRepository<LecturerEntitiy> lecturerRepository;
         private GenericRepository<LecturerGroupEntity> lecturerGroupRepository;
-        private GenericRepository<PulpitEntity> pulpitRepository;
+        private GenericRepository<ChairsEntity> pulpitRepository;
         private GenericRepository<SectionEntitiy> sectionRepository;
         private GenericRepository<StudentEntity> studentRepository;
 
@@ -66,12 +66,12 @@ namespace Graduation.DAL.UnitOfWork
 
             }
         }
-        public GenericRepository<PulpitEntity> PulpitRepository
+        public GenericRepository<ChairsEntity> PulpitRepository
         {
             get
             {
                 if (pulpitRepository == null)
-                    pulpitRepository = new GenericRepository<PulpitEntity>(context);
+                    pulpitRepository = new GenericRepository<ChairsEntity>(context);
                 return pulpitRepository;
 
             }

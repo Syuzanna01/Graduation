@@ -1,4 +1,4 @@
-﻿using Graduation.DAL;
+﻿using DataAccessLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,8 +9,8 @@ namespace Graduation.DAL.Repository
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(object id);
-        void Insert(TEntity obj);
-        void Update(TEntity obj);
+        void Insert(StudentEntity obj);
+        void Update(StudentEntity obj);
         void Delete(object id);
         void Save();
     }

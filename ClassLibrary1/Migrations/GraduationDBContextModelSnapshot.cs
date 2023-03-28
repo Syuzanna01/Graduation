@@ -21,6 +21,28 @@ namespace Graduation.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DataAccessLayer.Entities.ChairsEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Chairs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InstituteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstituteId");
+
+                    b.ToTable("Chairs");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.GroupEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -29,7 +51,7 @@ namespace Graduation.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Group")
+                    b.Property<string>("GroupName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -55,12 +77,7 @@ namespace Graduation.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PulpitId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PulpitId");
 
                     b.ToTable("Institutes");
                 });
@@ -73,13 +90,11 @@ namespace Graduation.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Boss")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Departmenthead")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -90,11 +105,10 @@ namespace Graduation.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Patronymic")
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -134,23 +148,6 @@ namespace Graduation.DAL.Migrations
                     b.ToTable("LecturerGroups");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.PulpitEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Pulpit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Pulpits");
-                });
-
             modelBuilder.Entity("DataAccessLayer.Entities.SectionEntitiy", b =>
                 {
                     b.Property<int>("Id")
@@ -159,19 +156,16 @@ namespace Graduation.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Department")
+                    b.Property<int>("ChairsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Section")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("InstituetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InstituteId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("InstituteId");
+                    b.HasIndex("ChairsId");
 
                     b.ToTable("Sections");
                 });
@@ -188,6 +182,10 @@ namespace Graduation.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
@@ -198,16 +196,12 @@ namespace Graduation.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Patronymic")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Sr")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
@@ -220,6 +214,17 @@ namespace Graduation.DAL.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.ChairsEntity", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.InstituteEntity", "Institute")
+                        .WithMany("Chairs")
+                        .HasForeignKey("InstituteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Institute");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.GroupEntity", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.SectionEntitiy", "Section")
@@ -229,17 +234,6 @@ namespace Graduation.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Section");
-                });
-
-            modelBuilder.Entity("DataAccessLayer.Entities.InstituteEntity", b =>
-                {
-                    b.HasOne("DataAccessLayer.Entities.PulpitEntity", "Pulpit")
-                        .WithMany("Institutes")
-                        .HasForeignKey("PulpitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pulpit");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.LecturerGroupEntity", b =>
@@ -263,13 +257,13 @@ namespace Graduation.DAL.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.SectionEntitiy", b =>
                 {
-                    b.HasOne("DataAccessLayer.Entities.InstituteEntity", "Institute")
+                    b.HasOne("DataAccessLayer.Entities.ChairsEntity", "Chairs")
                         .WithMany("Sections")
-                        .HasForeignKey("InstituteId")
+                        .HasForeignKey("ChairsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Institute");
+                    b.Navigation("Chairs");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.StudentEntity", b =>
@@ -283,6 +277,11 @@ namespace Graduation.DAL.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.ChairsEntity", b =>
+                {
+                    b.Navigation("Sections");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.GroupEntity", b =>
                 {
                     b.Navigation("LecturerGroups");
@@ -292,17 +291,12 @@ namespace Graduation.DAL.Migrations
 
             modelBuilder.Entity("DataAccessLayer.Entities.InstituteEntity", b =>
                 {
-                    b.Navigation("Sections");
+                    b.Navigation("Chairs");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.LecturerEntitiy", b =>
                 {
                     b.Navigation("LecturerGroups");
-                });
-
-            modelBuilder.Entity("DataAccessLayer.Entities.PulpitEntity", b =>
-                {
-                    b.Navigation("Institutes");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.SectionEntitiy", b =>

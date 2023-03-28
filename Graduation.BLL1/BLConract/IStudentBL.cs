@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Entities;
+using Gradutation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace Graduation.BLL.BLConract
 {
     public interface IStudentBL
     {
-        void Insert(StudentsModel student);
+        //StudentEntity GetById(string id);
+        StudentModel GetByIdentityNumber(string IdentityNumber);
+        void Remove(string IdentityNumber);
+        void Insert(StudentModel student);
+        void Update(StudentModel student);
     }
 }

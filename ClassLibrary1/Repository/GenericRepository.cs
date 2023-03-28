@@ -11,16 +11,47 @@ namespace Graduation.DAL.Repository
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private GraduationDBContext _context = null;
-        private DbSet<TEntity> table = null;
+        protected GraduationDBContext context;
+        protected DbSet<TEntity> table = null;
         public GenericRepository()
         {
-            this._context = new GraduationDBContext();
-            table = _context.Set<TEntity>();
+            this.context = new GraduationDBContext();
+            table = context.Set<TEntity>();
+        }
+        public GroupEntity GetStudentName(string GroupName)
+        {
+            return context?.Groups.FirstOrDefault(u => u.GroupName == GroupName);
+        }
+        public GroupEntity GetGroupName(int id)
+        {
+            return context?.Groups.FirstOrDefault(u => u.Id == id);
+        }
+        public SectionEntitiy GetSectionName(int id)
+        {
+            return context?.Sections.FirstOrDefault(u => u.Id == id);
+        }
+        public InstituteEntity GetInstituetNam(int id)
+        {
+            return context?.Institutes.FirstOrDefault(u => u.Id == id);
+        }
+        public ChairsEntity GetPulpitNam(int id)
+        {
+            return context?.Chairs.FirstOrDefault(u => u.Id == id);
+        }
+        public StudentEntity GetStudentByIdentityNumber(string IdentityNumber)
+        {
+            var student = context?.Students.FirstOrDefault(u => u.IdentityNumber == IdentityNumber);
+            return student;
+        }
+        public void Remove(string IdentityNumber)
+        {
+            var student = context?.Students.FirstOrDefault(u => u.IdentityNumber == IdentityNumber);
+            student.IsActive = false;
+            context?.Students.Update(student);
         }
         public GenericRepository(GraduationDBContext _context)
         {
-            this._context = _context;
+            this.context = _context;
             table = _context.Set<TEntity>();
         }
         public IEnumerable<TEntity> GetAll()
@@ -31,23 +62,30 @@ namespace Graduation.DAL.Repository
         {
             return table.Find(id);
         }
-        public void Insert(TEntity obj)
+        public void Insert(StudentEntity obj)
         {
-            table.Add(obj);
+            context?.Students.Add(obj);
         }
-        public void Update(TEntity obj)
+        public void Update(StudentEntity obj)
         {
-            table.Attach(obj);
-            _context.Entry(obj).State = EntityState.Modified;
+            var student = context?.Students.FirstOrDefault(u => u.IdentityNumber == obj.IdentityNumber);
+            student.FirstName= obj.FirstName;
+            student.LastName= obj.LastName;
+            student.Surname= obj.Surname;
+            student.Gender= obj.Gender;
+            student.Email= obj.Email;
+            student.IsActive = obj.IsActive;
+            context?.Students.Update(student);
         }
         public void Delete(object id)
         {
-            TEntity existing = table.Find(id);
-            table.Remove(existing);
+            //TEntity existing = table.Find(id);
+            context.Remove(id);
         }
         public void Save()
         {
-            _context.SaveChanges();
+            context.SaveChanges();
         }
+
     }
 }
