@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.Entities;
 using DataAccessLayer.EntityConfigurations;
+using Graduation.DAL.Entitiys;
+using Graduation.DAL.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,7 @@ namespace Graduation.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(@"Data Source=localhost\MSSQL2022;database=University;Integrated Security=True; Encrypt=False;");
+            options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;database=University;Integrated Security=True; Encrypt=False;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,13 +28,10 @@ namespace Graduation.DAL
             modelBuilder.ApplyConfiguration(new InstituteConfiguration());
             modelBuilder.ApplyConfiguration(new LecturerConfiguration());
             modelBuilder.ApplyConfiguration(new GroupConfiguration());
-            modelBuilder.ApplyConfiguration(new PulpitConfiguration());
+            modelBuilder.ApplyConfiguration(new ChairsConfiguration());
             modelBuilder.ApplyConfiguration(new LecturerGroupConfiguration());
-        }
-
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            return base.SaveChanges(acceptAllChangesOnSuccess);
+            modelBuilder.ApplyConfiguration(new GradedConfiguration());
+            modelBuilder.ApplyConfiguration(new SubjectConfiguration());
         }
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
@@ -44,8 +43,10 @@ namespace Graduation.DAL
         public DbSet<LecturerEntitiy> Lecturers { get; set; }
         public DbSet<SectionEntitiy> Sections { get; set; }
         public DbSet<GroupEntity> Groups { get; set; }
-        public DbSet<PulpitEntity> Pulpits { get; set; }
+        public DbSet<ChairsEntity> Chairs { get; set; }
         public DbSet<LecturerGroupEntity> LecturerGroups { get; set; }
         public DbSet<InstituteEntity> Institutes { get; set; }
+        public DbSet<GradedEntity> Gradeds { get; set; }
+        public DbSet<SubjectEntity> Subjects { get; set; }
     }
 }

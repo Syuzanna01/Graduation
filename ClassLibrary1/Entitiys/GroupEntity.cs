@@ -3,7 +3,7 @@
     public class GroupEntity
     {
         public int Id { get; set ; }
-        public string Name { get; set; }
+        public string GroupName { get; set; }
         public int SectionId { get; set; }
         public virtual ICollection<LecturerGroupEntity> LecturerGroups { get; set; }
         public virtual SectionEntitiy Section { get; set; }

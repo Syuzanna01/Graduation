@@ -1,0 +1,68 @@
+﻿@page
+@model WebApplication2.NewFolder.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "srgtrsgt";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>StudentEntity</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Patronymic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Patronymic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.IdentityNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.IdentityNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Sr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Sr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentEntity.Group)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentEntity.Group.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.StudentEntity?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

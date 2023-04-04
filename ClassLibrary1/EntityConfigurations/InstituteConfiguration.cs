@@ -9,7 +9,9 @@ namespace DataAccessLayer.EntityConfigurations
         public void Configure(EntityTypeBuilder<InstituteEntity> builder)
         {
             builder.HasKey(a => a.Id);
-            builder.HasMany(f => f.Sections).WithOne(a => a.Institute);
+            builder.HasMany(e => e.Chairs).WithOne(a => a.Institute);
+
+            //builder.HasMany(f => f.Sections).WithOne(a => a.Institute);
         }
     }
 }

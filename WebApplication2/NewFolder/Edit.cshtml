@@ -1,0 +1,71 @@
+﻿@page
+@model WebApplication2.NewFolder.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "srgtrsgt";
+}
+
+<h1>Edit</h1>
+
+<h4>StudentEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StudentEntity.Id" />
+            <div class="form-group">
+                <label asp-for="StudentEntity.Name" class="control-label"></label>
+                <input asp-for="StudentEntity.Name" class="form-control" />
+                <span asp-validation-for="StudentEntity.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentEntity.Surname" class="control-label"></label>
+                <input asp-for="StudentEntity.Surname" class="form-control" />
+                <span asp-validation-for="StudentEntity.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentEntity.Patronymic" class="control-label"></label>
+                <input asp-for="StudentEntity.Patronymic" class="form-control" />
+                <span asp-validation-for="StudentEntity.Patronymic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentEntity.Gender" class="control-label"></label>
+                <select asp-for="StudentEntity.Gender" class="form-control"></select>
+                <span asp-validation-for="StudentEntity.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentEntity.IdentityNumber" class="control-label"></label>
+                <input asp-for="StudentEntity.IdentityNumber" class="form-control" />
+                <span asp-validation-for="StudentEntity.IdentityNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentEntity.Email" class="control-label"></label>
+                <input asp-for="StudentEntity.Email" class="form-control" />
+                <span asp-validation-for="StudentEntity.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="StudentEntity.Sr" /> @Html.DisplayNameFor(model => model.StudentEntity.Sr)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentEntity.GroupId" class="control-label"></label>
+                <select asp-for="StudentEntity.GroupId" class="form-control" asp-items="ViewBag.GroupId"></select>
+                <span asp-validation-for="StudentEntity.GroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

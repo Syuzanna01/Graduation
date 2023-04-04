@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DataAccessLayer.Entities;
 using Graduation.DAL;
+using Graduation.DAL.Entitiys;
 using Graduation.DAL.Repository;
 
 namespace Graduation.DAL.UnitOfWork
@@ -13,9 +14,10 @@ namespace Graduation.DAL.UnitOfWork
         private GenericRepository<InstituteEntity> instituteRepository;
         private GenericRepository<LecturerEntitiy> lecturerRepository;
         private GenericRepository<LecturerGroupEntity> lecturerGroupRepository;
-        private GenericRepository<PulpitEntity> pulpitRepository;
+        private GenericRepository<ChairsEntity> pulpitRepository;
         private GenericRepository<SectionEntitiy> sectionRepository;
         private GenericRepository<StudentEntity> studentRepository;
+        private GenericRepository<GradedEntity> gradedRepository;
 
 
         private GraduationDBContext context;
@@ -66,12 +68,12 @@ namespace Graduation.DAL.UnitOfWork
 
             }
         }
-        public GenericRepository<PulpitEntity> PulpitRepository
+        public GenericRepository<ChairsEntity> PulpitRepository
         {
             get
             {
                 if (pulpitRepository == null)
-                    pulpitRepository = new GenericRepository<PulpitEntity>(context);
+                    pulpitRepository = new GenericRepository<ChairsEntity>(context);
                 return pulpitRepository;
 
             }
@@ -93,6 +95,17 @@ namespace Graduation.DAL.UnitOfWork
                 if (studentRepository == null)
                     studentRepository = new GenericRepository<StudentEntity>(context);
                 return studentRepository;
+
+            }
+        }
+
+        public GenericRepository<GradedEntity> GradedRepository
+        {
+            get
+            {
+                if (gradedRepository == null)
+                    gradedRepository = new GenericRepository<GradedEntity>(context);
+                return gradedRepository;
 
             }
         }
