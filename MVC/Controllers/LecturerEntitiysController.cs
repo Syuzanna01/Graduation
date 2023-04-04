@@ -58,7 +58,11 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Surname,Gender,IdentityNumber,Email,Position,IsActive")] LecturerEntitiy lecturerEntitiy)
         {
+<<<<<<< HEAD
             if (ModelState.IsValid)
+=======
+            if (!ModelState.IsValid)
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
             {
                 _context.Add(lecturerEntitiy);
                 await _context.SaveChangesAsync();
@@ -95,7 +99,11 @@ namespace MVC.Controllers
                 return NotFound();
             }
 
+<<<<<<< HEAD
             if (ModelState.IsValid)
+=======
+            if (!ModelState.IsValid)
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
             {
                 try
                 {

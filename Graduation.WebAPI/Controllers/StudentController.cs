@@ -3,7 +3,10 @@ using Graduation.BLL.BLConract;
 using Gradutation.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
 using Models.DTO;
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
 using System.Data;
 
 namespace Graduation.WebAPI.Controllers
@@ -60,6 +63,7 @@ namespace Graduation.WebAPI.Controllers
             studentBL.Update(student);
             return Ok();
         }
+<<<<<<< HEAD
 
         [HttpPut("Student/Graded")]
         public async Task<IActionResult> Update1([FromQuery] GradedModel student)
@@ -72,5 +76,7 @@ namespace Graduation.WebAPI.Controllers
             studentBL.Update1(student);
             return Ok();
         }
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
     }
 }

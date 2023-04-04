@@ -16,6 +16,7 @@ namespace Gradutation.Models
         public string Section { get; set; }
         public string Chairs { get; set; }
         public string Institute { get; set; }
+<<<<<<< HEAD
         public int Semester1 { get; set; }
         public int Semester2 { get; set; }
         public int Semester3 { get; set; }
@@ -24,5 +25,7 @@ namespace Gradutation.Models
         public int Semester6 { get; set; }
         public int Semester7 { get; set; }
         public int Semester8 { get; set; }
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
     }
 }

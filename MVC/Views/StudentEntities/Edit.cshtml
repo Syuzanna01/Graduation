@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 ﻿@model DataAccessLayer.Entities.StudentEntity
+=======
+﻿@using DataAccessLayer.Helpers;
+@model DataAccessLayer.Entities.StudentEntity
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
 
 @{
     ViewData["Title"] = "Edit";
@@ -29,9 +34,15 @@
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <label asp-for="Gender" class="control-label"></label>
                 <select asp-for="Gender" class="form-control"></select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
+=======
+                @Html.DropDownListFor(m => m.Gender,
+                new SelectList(Enum.GetValues(typeof(Gender))),
+                "Select Gender")
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
             </div>
             <div class="form-group">
                 <label asp-for="IdentityNumber" class="control-label"></label>
@@ -65,5 +76,11 @@
 </div>
 
 @section Scripts {
+<<<<<<< HEAD
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+=======
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
 }

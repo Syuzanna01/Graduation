@@ -1,7 +1,11 @@
 ﻿using DataAccessLayer.Entities;
+<<<<<<< HEAD
 using Graduation.DAL.Entitiys;
 using Gradutation.Models;
 using Models.DTO;
+=======
+using Gradutation.Models;
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +27,11 @@ namespace Models.Mappers
                 Gender = students.Gender,
                 IdentityNumber = students.IdentityNumber,
                 Email = students.Email,
+<<<<<<< HEAD
                 IsActive = students.IsActive,
+=======
+                IsActive= students.IsActive,    
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
                 Group = new GroupEntity()
                 {
                     GroupName = students.GroupName,
@@ -40,6 +48,7 @@ namespace Models.Mappers
                         }
                     }
                 }
+<<<<<<< HEAD
 
             };
         }
@@ -65,6 +74,8 @@ namespace Models.Mappers
                         GroupName = students.GroupName,
                     }
                 }
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
             };
         }
     }
