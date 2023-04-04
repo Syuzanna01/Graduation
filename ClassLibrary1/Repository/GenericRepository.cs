@@ -64,13 +64,14 @@ namespace Graduation.DAL.Repository
         {
             return table.Find(id);
         }
-        public void Insert(TEntity obj)
+        public void Insert(StudentEntity obj)
         {
-            table.Add(obj);
+            context?.Students.Add(obj);
         }
         public void Update(StudentEntity obj)
         {
             var student = context?.Students.FirstOrDefault(u => u.IdentityNumber == obj.IdentityNumber);
+<<<<<<< HEAD
             student.FirstName = obj.FirstName;
             student.LastName = obj.LastName;
             student.Surname = obj.Surname;
@@ -110,6 +111,15 @@ namespace Graduation.DAL.Repository
                 + studentGrad.Graded3* Credit3 + studentGrad.Graded4*Credit4) / 4;
             }
             context?.Gradeds.Update(studentGrad);
+=======
+            student.FirstName= obj.FirstName;
+            student.LastName= obj.LastName;
+            student.Surname= obj.Surname;
+            student.Gender= obj.Gender;
+            student.Email= obj.Email;
+            student.IsActive = obj.IsActive;
+            context?.Students.Update(student);
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
         }
         public void Delete(object id)
         {

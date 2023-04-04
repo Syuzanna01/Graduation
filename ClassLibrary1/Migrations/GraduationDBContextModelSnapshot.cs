@@ -214,6 +214,7 @@ namespace Graduation.DAL.Migrations
                     b.ToTable("Students");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Graduation.DAL.Entitiys.GradedEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -286,6 +287,8 @@ namespace Graduation.DAL.Migrations
                     b.ToTable("Subjects");
                 });
 
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
             modelBuilder.Entity("DataAccessLayer.Entities.ChairsEntity", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.InstituteEntity", "Institute")
@@ -349,6 +352,7 @@ namespace Graduation.DAL.Migrations
                     b.Navigation("Group");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Graduation.DAL.Entitiys.GradedEntity", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.StudentEntity", "Student")
@@ -360,6 +364,8 @@ namespace Graduation.DAL.Migrations
                     b.Navigation("Student");
                 });
 
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
             modelBuilder.Entity("DataAccessLayer.Entities.ChairsEntity", b =>
                 {
                     b.Navigation("Sections");

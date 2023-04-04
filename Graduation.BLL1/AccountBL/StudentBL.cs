@@ -2,7 +2,10 @@
 using Graduation.BLL.BLConract;
 using Graduation.DAL.UnitOfWork;
 using Gradutation.Models;
+<<<<<<< HEAD
 using Models.DTO;
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
 using Models.Mappers;
 using System;
 using System.Collections.Generic;
@@ -43,6 +46,7 @@ namespace Graduation.BLL.AccountBL
             unitOfWork.StudentRepository.Save();
         }
 
+<<<<<<< HEAD
         public void Update1(GradedModel student)
         {
             var studentEntity = StudentMaper.MaperGraded(student);
@@ -51,6 +55,8 @@ namespace Graduation.BLL.AccountBL
 
             unitOfWork.StudentRepository.Save();
         }
+=======
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
         //public StudentEntity GetById(string id)
         //{
         //    return unitOfWork.StudentRepository.GetById(id);

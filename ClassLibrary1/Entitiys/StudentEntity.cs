@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer.Helpers;
-using Graduation.DAL.Entitiys;
 
 namespace DataAccessLayer.Entities
 {
@@ -15,6 +14,6 @@ namespace DataAccessLayer.Entities
         public bool IsActive { get; set; }
         public int GroupId { get; set; }
         public virtual GroupEntity Group { get; set; }
-        public virtual ICollection<GradedEntity> Gradeds { get; set; }
+
     }
 }

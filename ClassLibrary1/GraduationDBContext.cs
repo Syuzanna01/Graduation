@@ -30,9 +30,18 @@ namespace Graduation.DAL
             modelBuilder.ApplyConfiguration(new GroupConfiguration());
             modelBuilder.ApplyConfiguration(new ChairsConfiguration());
             modelBuilder.ApplyConfiguration(new LecturerGroupConfiguration());
+<<<<<<< HEAD
             modelBuilder.ApplyConfiguration(new GradedConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
         }
+=======
+        }
+
+        //public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        //{
+        //    return base.SaveChanges(acceptAllChangesOnSuccess);
+        //}
+>>>>>>> bfd84c7ee5a21fc5d5c02c44cb7b480318ec778f
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
         {
